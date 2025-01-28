@@ -1,0 +1,1384 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\usepackage[normalem]{ulem}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{COMP 5013 COURSEWORK R5//jarvis//media/image2.png}
+\end{figure}
+
+ \begin{center}
+\textbf{COMP5013 Topics in Applied Artificial Intelligence (23/SP/SB/M)}
+
+\hspace{1cm}
+
+
+\textbf{Title :}
+\textbf{Enhancing Medical Images with Class-Based Generative Adversarial
+Networks: Implementation for Brain Imaging}
+
+\hspace{1cm}
+
+
+\textbf{Module Leader: Prof. Dr. Vivek Singh}
+
+
+\textbf{Tutor: Prof. Dr Haoyi Wang}
+
+\hspace{1cm}
+
+
+\textbf{Author:}
+
+
+\textbf{Akash Tejam - 10863536}
+
+
+\textbf{Utsab Chalise - 10899959}
+
+
+\textbf{Carlton Vincent Rebello -- 10884491}
+
+\hspace{10cm}
+
+
+\textbf{University of Plymouth Faculty of Science \& Engineering}
+\end{center}
+
+\pagebreak
+
+
+\textbf{Project Name : jarvis}
+
+\textbf{Members : Utsab, Akash, Carlton}\\
+Following is the contributions for each team member in this project:
+
+1. Utsab:
+
+-Implemented the core functionality of the GAN model, including the
+generator, discriminator (or critic), and training loop.
+
+- Worked on data preprocessing, including loading datasets, data
+augmentation, and normalisation.
+- Implemented the Class-based approach on top of PROGAN, making other architecture changes as required.
+- Handled the integration of necessary libraries such as PyTorch,
+Matplotlib, and tqdm for training and visualisation.
+
+- Debugged and resolved issues related to model convergence, loss
+fluctuations, and training stability.
+
+- Collaborated with other team members to refine and optimise the
+codebase for efficiency and performance.
+
+- Conducted experiments to evaluate the quality of generated images and
+the stability of the training process under various conditions.
+
+- Documented code functionalities, wrote code comments, and provided
+clear explanations for complex algorithms and techniques used in the
+model.
+
+- Prepared documentation and reports summarising the
+project\textquotesingle s progress, results.
+
+2. Carlton:
+
+- Implemented additional components of the GAN model, such as custom
+layers (e.g., WSConv2d), conditional batch normalisation, and pixel
+normalisation.
+
+- Contributed to the design and architecture decisions of the GAN model,
+ensuring scalability, flexibility, and compatibility with different
+datasets and image sizes.
+
+- Conducted experiments to fine-tune hyperparameters, including learning
+rates, batch sizes, and optimization algorithms.
+
+- Assisted in debugging and troubleshooting issues related to network
+architecture, gradient flow, and numerical stability.
+
+- Documented code functionalities, wrote code comments, and provided
+clear explanations for complex algorithms and techniques used in the
+model.
+
+- Conducted experiments to evaluate the quality of generated images and
+the stability of the training process under various conditions.
+
+- Prepared documentation and reports summarising the
+project\textquotesingle s progress, results.
+
+3. Akash:
+
+- Developed visualisation tools and utilities for monitoring and
+analysing training progress, including loss plots, image distributions,
+and sample generations.
+
+- Implemented functions for saving and loading model checkpoints,
+enabling the continuation of training from a specific point.
+
+- Conducted experiments to fine-tune hyperparameters, including learning
+rates, batch sizes, and optimization algorithms.
+
+- Debugged and resolved issues related to model convergence, loss
+fluctuations, and training stability.
+
+- Contributed to the design and architecture decisions of the GAN model,
+ensuring scalability, flexibility, and compatibility with different
+datasets and image sizes.
+
+- Contributed to writing scripts for generating synthetic data examples
+and evaluating model performance.
+
+- Conducted experiments to evaluate the quality of generated images and
+the stability of the training process under various conditions.
+
+- Prepared documentation and reports summarising the
+project\textquotesingle s progress, results.
+
+Each team member\textquotesingle s contributions are crucial for the
+success of the project, and collaboration among team members ensures
+that the GAN model is developed, trained, and evaluated effectively.
+
+We started with the source code from
+(\href{https://blog.paperspace.com/understanding-progan/}{\uline{https://blog.paperspace.com/understanding-progan/}})
+and built upon it to develop our enhanced medical imaging model using
+class-based generative adversarial networks (GANs) and the Progressive
+growth of GANs (ProGAN) architecture.
+\pagebreak
+
+\textbf{1. Introduction:}
+
+Medical imaging plays a vital part in the determination and treatment of
+different diseases, including brain-related conditions. Advancements in
+imaging techniques have significantly improved the quality and accuracy
+of medical imaging, driving to superior persistent results. However,
+conventional imaging methods frequently confront challenges such as
+restricted resolution, commotion, and artifacts, which can ruin
+diagnostic accuracy. Generative Adversarial Networks (GANs) have risen
+as a capable method for generating realistic synthetic images, offering
+promising solutions for enhancing medical imaging (Armanious et al.,
+2020). In particular, class-based GANs have illustrated their capacity
+to produce high-quality images conditioned on particular classes, making
+them well-suited for medical imaging applications.
+
+This report explores the implementation of a class-based GAN utilising
+the ProGAN architecture for brain imaging. ProGAN is a variant of GANs
+that progressively grows the generator and discriminator networks amid
+training, allowing for the generation of high-resolution images (Karras
+et al., 2018). By leveraging the strengths of class-based GANs and the
+ProGAN architecture, we aim to improve the quality and resolution of
+brain imaging while addressing the limitations of existing methods.
+
+\textbf{2. Literature Review:}
+
+Generative Adversarial Networks (GANs), a revolutionary concept in deep
+learning, involve two neural networks---a generator and a
+discriminator---that learn through an adversarial process. The generator
+creates synthetic data samples while the discriminator attempts to
+differentiate between genuine and generated samples, a dynamic that
+significantly improves the realism of the synthetic data (Goodfellow et
+al., 2014; Creswell et al., 2018). This method has been widely applied
+across various fields, including image synthesis and data augmentation.
+However, conventional GANs often struggle with high-resolution image
+production and can experience instability during training (Karras et
+al., 2018).
+
+The generator network takes an arbitrary noise vector as input and
+changes it into a synthetic data sample, such as an image or an
+arrangement of data. The discriminator network, on the other hand, gets
+both genuine and produced data samples and tries to recognize between
+them. Amid training, the generator and discriminator networks are
+enhanced at the same time utilising an adversarial loss function, which
+empowers the generator to create more reasonable data samples and the
+discriminator to be way better at recognizing genuine from fake samples
+(Goodfellow et al., 2014). GANs have been effectively connected to a
+wide run of applications, including image generation, image-to-image
+interpretation, super-resolution imaging, and data augmentation
+(Kazeminia et al., 2020; Jiang et al., 2021). In any case, conventional
+GANs frequently battle with creating high-resolution images and can
+endure training instability and mode collapse, especially for complex
+datasets (Karras et al., 2018).
+
+Class-based GANs extend the traditional GAN framework by conditioning
+the generation process on class labels (Mirza and Osindero, 2014). This
+allows for the generation of diverse and class-specific images, making
+them suitable for medical imaging applications where different classes
+(e.g., healthy and diseased tissues) need to be distinguished.
+
+In a class-based GAN, both the generator and discriminator networks
+receive additional input in the form of class labels or one-hot encoded
+vectors representing the desired class. The generator uses these class
+labels, along with the random noise vector, to create synthetic data
+samples that have a place in the specified class. The discriminator, in
+addition to recognizing between genuine and fake samples, also
+classifies the input data into their respective classes (Odena et al.,
+2017). Class-based GANs have been effectively connected in different
+spaces, including image synthesis, image editing, and domain adaptation
+(Ren et al., 2019; Xian et al., 2018). Within the context of medical
+imaging, class-based GANs can be utilised to create synthetic images of
+diverse anatomical structures, pathologies, or imaging modalities, which
+can be profitable for data augmentation, enhancing image quality, or
+exploring disease progression (Shin et al., 2018; Dai et al., 2020).
+
+Dynamic Developing of GANs (ProGAN) is an advanced GAN architecture that
+addresses the challenges of training high-resolution GANs. It begins
+with low-resolution pictures and progressively develops the generator
+and discriminator networks during training, permitting the generation of
+high-resolution pictures (Karras et al., 2018). The key idea behind
+ProGAN is to start training with low-resolution pictures (e.g., 4x4
+pixels) and continuously increment the resolution by including new
+layers to the generator and discriminator networks. This dynamic
+developing approach makes a difference to stabilise the training process
+and progresses the quality of the produced high-resolution pictures.
+
+During the training process, ProGAN employs a technique called "fading
+in" to smoothly transition between low-resolution and high-resolution
+pictures. This involves blending the low-resolution and high-resolution
+images using a weighted sum, where the weights are gradually adjusted to
+favour the high-resolution images as training advances (Karras et al.,
+2018).In addition to the progressive growing strategy, ProGAN
+incorporates a few architectural and training improvements to assist
+enhance the quality of the produced pictures. These include equalised
+learning rates, pixel normalisation, and minibatch standard deviation
+(Karras et al., 2018).
+
+ProGAN has illustrated impressive results in producing high-resolution,
+photorealistic images, especially in the domain of face generation
+(Karras et al., 2019). However, its application in medical imaging has
+been limited, and exploring its potential for enhancing brain imaging is
+an exciting avenue for research.
+
+Improvements and Differences between ProGAN and DCGAN:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \begin{quote}
+  \textbf{Resolution and Image Quality}: ProGAN is designed to create
+  high-resolution images by progressively developing the generator and
+  discriminator networks, while DCGAN (Deep Convolutional GAN) is
+  limited to a fixed resolution determined by the network architecture
+  (Radford et al., 2015). ProGAN\textquotesingle s progressive growing
+  approach allows for the generation of images with significantly higher
+  resolutions (e.g., 1024x1024 pixels) compared to DCGAN, which
+  typically generates lower-resolution images (e.g., 64x64 pixels).
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Stability and Training Convergence}: ProGAN introduces
+  techniques such as equalised learning rates and pixel normalisation,
+  which help stabilise the training process and improve convergence,
+  especially for high-resolution images (Karras et al., 2018). DCGAN may
+  suffer from training instability and mode collapse, particularly for
+  complex datasets or high-resolution images.
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Memory Efficiency}: ProGAN\textquotesingle s progressive
+  growing approach allows for efficient utilisation of GPU memory
+  because it begins with low-resolution images and slowly increments the
+  memory prerequisites as the networks grow (Karras et al., 2018).
+  DCGAN, on the other hand, requires a settled amount of memory
+  throughout the training process, which can be demanding for
+  high-resolution images.
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Architectural Differences}: ProGAN employs a unique
+  architecture with upsampling and downsampling layers, as well as skip
+  connections, which facilitate the generation of high-quality images
+  (Karras et al., 2018). DCGAN follows a more traditional convolutional
+  architecture without these specialised components.
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Latent Space Interpolation}: ProGAN\textquotesingle s latent
+  space exhibits improved interpolation properties compared to DCGAN,
+  allowing for smooth transitions between generated images by
+  interpolating in the latent space (Karras et al., 2018). This can
+  benefit medical imaging applications where morphing between different
+  conditions or anatomical structures is desirable.
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Training Stability}: ProGAN introduces additional techniques
+  such as minibatch standard deviation and lazy regularisation to
+  advance and stabilise the training process and progress the quality of
+  produced images (Karras et al., 2018). DCGAN does not incorporate
+  these advanced techniques, which can lead to training instability and
+  mode collapse, particularly for complex datasets or high-resolution
+  images.
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Computational Efficiency:} While ProGAN requires more
+  computationally intensive training due to the progressive growing
+  approach and additional architectural components, it can be more
+  effective in terms of memory utilisation compared to DCGAN, because it
+  begins with low-resolution images and slowly increments the memory
+  requirements, allowing for better resource utilisation.
+  \end{quote}
+\end{enumerate}
+
+While ProGAN significantly advances the generation of photorealistic,
+high-resolution images, the integration of such images into practical
+applications necessitates reliable detection and classification systems.
+This is where the VGG architecture plays a critical role. Known for its
+deep, uniform structure of convolutional layers followed by max-pooling
+layers, VGG excels in extracting intricate features from images, which
+is essential for accurate image classification (Simonyan \& Zisserman,
+2014). The depth of VGG allows it to learn hierarchical features
+effectively, making it a staple in computer vision tasks, particularly
+in scenarios requiring fine-grained recognition and classification.
+
+\textbf{3. Problem Statement:}
+
+Traditional medical imaging techniques often face limitations in terms
+of resolution, noise, and artifacts, which can impact diagnostic
+accuracy. Additionally, getting hands-on high-quality medical images can
+be costly and time-consuming, and in some cases, may pose risks to
+patients due to radiation exposure or invasive procedures. The
+implementation of class-based GANs with the ProGAN architecture aims to
+address these challenges by generating high-resolution, realistic, and
+class-specific brain images. By leveraging the strengths of class-based
+GANs and the ProGAN architecture, we aim to improve the quality and
+resolution of brain imaging while reducing the reliance on costly and
+potentially harmful imaging techniques.
+
+Furthermore, the ability to generate synthetic brain images conditioned
+on specific classes, such as healthy or diseased tissues, can provide
+valuable data for training and evaluating machine learning models for
+disease diagnosis and treatment planning. This can potentially lead to
+more accurate and efficient diagnostic processes, as well as the
+development of personalised treatment strategies.
+
+However, the successful implementation of class-based ProGAN for brain
+imaging presents several challenges. To begin with, training GANs,
+especially for complex datasets like therapeutic pictures, can be
+famously difficult due to issues such as mode collapse, preparing
+instability, and non-convergence (Arjovsky and Bottou, 2017).
+Additionally, ensuring the generated images accurately represent the
+desired classes and preserve clinically relevant details is crucial for
+medical applications. Another challenge lies in the limited availability
+of large, diverse, and well-annotated brain imaging datasets. Medical
+data is often sensitive and subject to privacy regulations, making it
+difficult to obtain and share datasets across institutions (Kaissis et
+al., 2020). Furthermore, the variability in imaging protocols, scanner
+types, and patient demographics can introduce additional complexities in
+training robust and generalizable models.
+
+Addressing these challenges requires careful thought of data
+pre-processing techniques, model architecture design, loss function
+formulation, and evaluation metrics custom-fitted for medical imaging
+applications.
+
+\textbf{4.Methodology:}
+
+\textbf{4.1 Data Preprocessing}
+
+The first step in our methodology involved preprocessing the brain
+imaging dataset. This included tasks such as image resizing,
+normalisation, and data increase to guarantee consistent input
+measurements and to increase the diversity of the training data. Image
+resizing was essential to coordinate the input requirements of the
+ProGAN architecture, which begins with low-resolution pictures and
+progressively grows the resolution during training. We employed various
+interpolation techniques, such as bicubic interpolation or area
+interpolation, to resize the images while preserving important details
+and minimising artifacts.
+
+Normalisation was performed to standardise the pixel values across the
+dataset, ensuring consistent input distributions for the neural
+networks. Common normalisation techniques, such as min-max normalisation
+or z-score normalisation, were applied to the image information.
+
+Data augmentation procedures, including irregular rotations, flips,
+zooms, and versatile distortions, were utilised to artificially increase
+the size and diversity of the preparing dataset. This approach helps to
+improve the model\textquotesingle s generalisation ability and
+robustness to variations within the input data.
+
+\textbf{4.2 Model Architecture}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{COMP 5013 COURSEWORK R5//jarvis//media/image3.png}
+
+
+\end{figure}
+
+We executed a class-based GAN utilising the ProGAN architecture. The
+generator network was outlined to require class labels and random noise
+as input and create synthetic brain images conditioned on the provided
+class labels. The discriminator network pointed to distinguish between
+real brain pictures and the generated synthetic images while also
+classifying the input images into their respective classes.The generator
+network followed the ProGAN architecture, consisting of an arrangement
+of convolutional layers with upsampling and skip connections. The input
+to the generator was a concatenation of the class label (represented as
+a one-hot encoded vector) and a random noise vector. The class label and
+noise vector were transformed through an arrangement of linear and
+convolutional layers, and the coming feature maps were dynamically
+upsampled to produce high-resolution images.
+
+The discriminator network too utilised the ProGAN engineering, with a
+series of convolutional layers and downsampling operations. The input to
+the discriminator was either a genuine brain image or a generated
+synthetic image, in conjunction with the corresponding class label. The
+discriminator pointed to classify the input as real or fake whereas
+moreover predicting the correct class label.Both the generator and
+discriminator networks consolidated techniques such as equalised
+learning rates, pixel normalisation, and minibatch standard deviation to
+improve training stability and convergence (Karras et al., 2018).
+
+\textbf{4.3 Progressive Growing}
+
+Following the ProGAN approach, we progressively grew the generator and
+discriminator networks during training. The networks started with
+low-resolution images (e.g., 4x4 pixels) and were gradually upsampled to
+higher resolutions (e.g., 256 * 256 pixels) by adding new layers and
+adjusting existing layers. This progressive growing strategy helped
+stabilise the training process and improved the quality of the generated
+high-resolution images.
+
+During each growth phase, the newly added layers were initialised with
+random weights, and the existing layers maintained their previously
+learned weights. The training process alternated between optimising the
+existing layers and the newly added layers, allowing for a smooth
+transition between resolutions.
+
+To facilitate the transition between resolutions, we employed a
+technique called "fading in" (Karras et al., 2018). This involved
+blending the low-resolution and high-resolution images using a weighted
+sum, where the weights were gradually adjusted to favour the
+high-resolution images as training progressed. This smooth transition
+helped to stabilise the training process and prevent abrupt changes that
+could cause instability.
+
+\textbf{4.4 Loss Functions and Optimization}
+
+We employed a combination of adversarial loss and auxiliary classifier
+loss to train the class-based ProGAN model. The adversarial loss
+energised the generator to create practical images that may trick the
+discriminator, while the auxiliary classifier loss ensured that the
+generated images were correctly classified into their individual
+classes.
+
+The adversarial loss was based on the non-saturating logistic loss
+function (Goodfellow et al., 2014), which has been shown to provide
+better gradients and improved training stability compared to the
+traditional binary cross-entropy loss. The adversarial loss for the
+generator and discriminator can be expressed as:
+
+
+$$\[L\_adv\_G = -E{[}log(D(G(z, c))){]} L\_adv\_D = -E{[}log(D(x, c)){]}
+- E{[}log(1 - D(G(z, c))){]}\]$$
+
+
+Where G and D represent the generator and discriminator networks,
+respectively, z is the random noise vector, c is the class label, x is
+the real image, and E denotes the expectation over the respective
+distributions.
+
+The auxiliary classifier loss was implemented as a cross-entropy loss
+function, which aimed to minimise the classification error for both real
+and generated images. The classifier loss for the discriminator can be
+expressed as:
+
+
+$$\[L\_cls\_D = -E{[}log(P(C=c\textbar x)){]} -
+E{[}log(P(C=c\textbar G(z, c))){]}]$$
+
+Where C represents the anticipated class label, and represents the
+probabilities of the correct class label for the genuine and generated
+images, respectively.
+
+The total loss for the generator and discriminator systems was a
+weighted sum of the adversarial loss and the auxiliary classifier loss:
+
+
+$$\[L\_G = L\_adv\_G + λ\_cls * L\_cls\_G L\_D = L\_adv\_D + λ\_cls *
+L\_cls\_D\]$$
+
+
+Where λ\_cls is a hyperparameter that controls the relative importance
+of the classifier loss.
+
+The model was optimised using Adam optimizer (Kingma and Ba, 2014),
+which is a popular choice for training deep neural networks due to its
+adaptive learning rate and momentum-based updates.
+
+\textbf{5. Class-Based Model}
+
+To enhance the capability of our class-based ProGAN model for brain
+imaging applications, we made strategic modifications to the standard
+ProGAN architecture and incorporated advanced techniques for handling
+embeddings. These adjustments are tailored to leverage the unique
+aspects of medical imaging data and to ensure that the model effectively
+utilises the class-specific information.
+
+\hypertarget{embedding-techniques}{%
+\subsubsection{\texorpdfstring{\textbf{5.1 Embedding
+Techniques}}{5.1 Embedding Techniques}}\label{embedding-techniques}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \begin{quote}
+  \textbf{Class Label Embedding}:In our modified architecture, class
+  label embeddings play a crucial role. Instead of directly using a
+  one-hot encoded vector, we transform class labels through an embedding
+  layer that maps each class to a dense, continuous vector. This
+  approach allows the model to capture more complex patterns and
+  relationships between different classes, which is particularly
+  beneficial for nuanced medical diagnoses such as differentiating
+  between various types of brain tumours. These embeddings are then
+  concatenated with a random noise vector, serving as the comprehensive
+  input to the generator. This fusion ensures that the synthetic images
+  generated not only exhibit visual realism but also adhere closely to
+  the class-specific characteristics dictated by the input label.
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Feature Embeddings in the Discriminator}:The discriminator
+  network also utilises embeddings to better assess and classify the
+  generated images. By embedding both real and synthetic images into a
+  high-dimensional space, the discriminator can more effectively learn
+  to distinguish between the two while also accurately predicting the
+  correct class label. This embedding mechanism within the discriminator
+  aids in enhancing the precision of class predictions, crucial for
+  applications in medical imaging where accurate diagnosis can
+  significantly impact patient outcomes.
+  \end{quote}
+\end{enumerate}
+
+\hypertarget{architectural-changes}{%
+\subsubsection{\texorpdfstring{\textbf{5.2 Architectural
+Changes}}{5.2 Architectural Changes}}\label{architectural-changes}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \begin{quote}
+  \textbf{Progressive Growing with Modular Blocks}:We adapted the
+  progressive growing technique by incorporating modular blocks that
+  allow for more flexible adjustments during the training process. Each
+  block consists of convolutional layers that can be dynamically added
+  or adjusted based on the training phase and resolution requirements.
+  This modular approach facilitates easier experimentation and tuning of
+  the architecture, allowing us to optimise each block for specific
+  features of the brain imaging data.
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Integration of Attention Mechanisms}:Attention mechanisms have
+  been integrated into both the generator and discriminator networks.
+  These mechanisms enable the networks to focus on relevant features
+  within the images, which is particularly important for identifying
+  subtle anomalies in medical images such as brain scans. By directing
+  the model's focus to critical areas within an image, the attention
+  layers help improve the detail and accuracy of the generated images,
+  ensuring that clinically relevant features are preserved and
+  emphasised.
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Skip Connections in Upsampling and Downsampling}:We enhanced
+  the architecture with additional skip connections, particularly in the
+  upsampling pathways of the generator and the downsampling pathways of
+  the discriminator. These connections help preserve high-frequency
+  details that are often lost during deep network processing. In the
+  context of medical imaging, maintaining these details is crucial for
+  retaining diagnostic features in the images, thereby aiding in more
+  accurate and reliable image analysis.
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Custom Loss Functions}:Beyond the standard adversarial and
+  classifier losses, we introduced custom loss functions tailored to the
+  specific challenges of medical image synthesis. These include losses
+  designed to penalise structural discrepancies and enhance
+  feature-specific accuracy, further aligning the generated images with
+  medical accuracy requirements.
+  \end{quote}
+\end{enumerate}
+
+These enhancements to the embeddings and architecture of our ProGAN
+model are designed to tackle the unique challenges of generating
+high-fidelity, class-accurate medical images. Through these innovations,
+we aim to significantly advance the field of medical image analysis,
+improving both the quality of synthetic images and the reliability of
+automated diagnostic processes.
+
+\textbf{6. Model Training}
+
+The model was trained on a dataset of brain images using the progressive
+growing strategy.\\
+(\href{https://www.kaggle.com/datasets/navoneel/brain-mri-images-for-brain-tumor-detection}{\uline{https://www.kaggle.com/datasets/navoneel/brain-mri-images-for-brain-tumor-detection}}).
+During training, the generator and discriminator networks competed
+against each other, with the generator trying to produce realistic brain
+images that might trick the discriminator, and the discriminator
+attempting to distinguish between real and produced images while also
+classifying them accurately.
+
+The training process involved the following steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \begin{quote}
+  Initialise the generator and discriminator networks with
+  low-resolution layers (e.g., 4x4 pixels).
+  \end{quote}
+\item
+  \begin{quote}
+  Train the low-resolution networks until convergence or for a fixed
+  number of iterations.
+  \end{quote}
+\item
+  \begin{quote}
+  Add new layers to the generator and discriminator networks to increase
+  the resolution (e.g., from 4x4 to 8x8 pixels).
+  \end{quote}
+\item
+  \begin{quote}
+  Train the new layers while freezing the weights of the previously
+  trained layers.
+  \end{quote}
+\item
+  \begin{quote}
+  Gradually fade in the higher-resolution images by adjusting the
+  blending weights.
+  \end{quote}
+\item
+  \begin{quote}
+  Repeat steps 3-5 until the desired resolution is reached (e.g.,
+  256x256 pixels).
+  \end{quote}
+\end{enumerate}
+
+During each growth phase, we employed techniques such as progressive
+growing, equalised learning rates, and minibatch standard deviation to
+stabilise the training process and improve convergence (Karras et al.,
+2018).
+
+The training process was monitored using various evaluation metrics,
+including the discriminator\textquotesingle s classification accuracy,
+inception score, and visual inspection of the generated images. Periodic
+checkpoints of the model weights were saved during training, allowing
+for the selection of the best-performing model based on the evaluation
+metrics.
+
+Throughout the training process, we employed various regularisation
+techniques and hyperparameter tuning strategies to improve the
+model\textquotesingle s performance and stability. These included
+adjusting the learning rates, batch sizes, weight initializations, and
+the relative weighting of the adversarial and classifier losses.
+
+Additionally, we explored different architectural variations and
+modifications to the ProGAN model, such as incorporating attention
+mechanisms, skip connections, or alternative normalisation techniques.
+These modifications aimed to improve the model\textquotesingle s ability
+to capture and preserve clinically relevant details in the generated
+brain images.
+
+\textbf{7. Evaluation Metrics:}
+
+During the training process of the generative adversarial network (GAN),
+the evolution of both the critic and generator losses provides valuable
+insights into the learning dynamics and the progression towards
+generating realistic images.
+
+\textbf{7.1.1 Critic Loss:}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  At the onset of training (0th iteration), the high critic loss (32)
+  indicates the initial struggle of the critic network to differentiate
+  between real and generated images, which is expected during the
+  learning phase.
+  \end{quote}
+\item
+  \begin{quote}
+  After 5 iterations, the critic loss decreases to -10, implying that
+  the critic performs better than random chance. This suggests an
+  improvement in its ability to discriminate between real and generated
+  images.
+  \end{quote}
+\item
+  \begin{quote}
+  Throughout iterations 5 to 350, the critic loss fluctuates around
+  zero, indicating effective discrimination between real and generated
+  images. The proximity of the loss to zero suggests that the generator
+  is progressively improving.
+  \end{quote}
+\item
+  \begin{quote}
+  Beyond 350 iterations, fluctuations in the critic loss occur between 5
+  and -15, possibly signalling a plateau in training or challenges in
+  further enhancing the critic\textquotesingle s performance. These
+  fluctuations may stem from various factors, including dataset
+  complexity or training dynamics.
+  \end{quote}
+\end{itemize}
+
+\textbf{7.1.2 Generator Loss:}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  Initially (0th iteration), the high generator loss (-22) signifies its
+  struggle to produce convincing images that deceive the critic. This is
+  typical during early training stages with randomly initialised
+  weights.
+  \end{quote}
+\item
+  \begin{quote}
+  After 5 iterations, the generator loss increases to 18, indicating
+  adjustments in response to the critic\textquotesingle s feedback,
+  albeit not yet yielding significant improvements in image quality.
+  \end{quote}
+\item
+  \begin{quote}
+  Between iterations 5 and 350, the generator loss stabilises around
+  zero, reflecting the generation of images increasingly difficult for
+  the critic to discern from real ones. The consistent loss near zero
+  suggests convergence towards realistic image generation.
+  \end{quote}
+\item
+  \begin{quote}
+  Post 350 iterations, fluctuations in the generator loss range between
+  5 and 18, similar to the critic loss. These fluctuations may denote
+  challenges like mode collapse or instability, necessitating further
+  refinement of hyperparameters or network architecture.
+  \end{quote}
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{COMP 5013 COURSEWORK R5//jarvis//media/image4.png}
+
+
+\end{figure}
+
+\hypertarget{section}{%
+\paragraph{}\label{section}}
+
+\hypertarget{section-1}{%
+\paragraph{}\label{section-1}}
+
+\hypertarget{gradient-penalty}{%
+\paragraph{\texorpdfstring{\textbf{7.2. Gradient
+Penalty:}}{7.2. Gradient Penalty:}}\label{gradient-penalty}}
+
+This is applied to ensure the discriminator\textquotesingle s gradients
+neither vanish nor explode, which is essential for the stability of the
+training process. It regularises the discriminator by penalising the
+norm of gradient vectors that deviate from a predetermined constant
+(usually 1). Monitoring this metric helps maintain healthy gradients and
+contributes to the overall stability of GAN training.
+
+\hypertarget{image-quality-assessment}{%
+\paragraph{\texorpdfstring{\textbf{7.3. Image Quality
+Assessment:}}{7.3. Image Quality Assessment:}}\label{image-quality-assessment}}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  \textbf{Visual Inspection}: Periodically, images generated by the GAN
+  are visually inspected. This qualitative metric allows for the direct
+  assessment of the progression in image quality, realism, and detail.
+  It is crucial for determining the practical effectiveness of the GAN
+  in producing usable outputs, especially in domains requiring high
+  fidelity like medical imaging.
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Generated vs. Real Image Distributions}: By plotting
+  distributions of real and generated images, one can visually assess
+  how closely the generated images mimic the real data distribution.
+  This comparison can be particularly informative when looking at
+  specific features or domains such as texture, color, and overall image
+  composition.
+  \end{quote}
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{COMP 5013 COURSEWORK R5//jarvis//media/image1.png}
+
+
+\end{figure}
+
+\hypertarget{statistical-distribution-comparisons}{%
+\paragraph{\texorpdfstring{\textbf{7.4 Statistical Distribution
+Comparisons:}}{7.4 Statistical Distribution Comparisons:}}\label{statistical-distribution-comparisons}}
+
+This involves comparing the statistical properties (e.g., mean,
+variance) of the distributions of real and generated images. Closer
+statistical alignment between these distributions indicates better model
+performance in replicating genuine data characteristics.
+
+In summary, the fluctuations in both critic and generator losses
+highlight the ongoing learning and adaptation of the GAN throughout
+training. These fluctuations are inherent to GAN training and underscore
+the importance of fine-tuning parameters and architecture to achieve
+improved convergence and stability.
+
+
+
+\textbf{8. Qualitative Evaluation:}
+
+In addition to the qualitative and comparative analyses of our
+class-based ProGAN model, we also employed a VGG network to
+quantitatively assess the quality of generated images by leveraging its
+capabilities as a feature extractor and classifier. VGG networks are
+known for their deep architecture, which excels at capturing complex
+features in image data, making them an excellent tool for evaluating
+image recognition and classification tasks.
+
+\hypertarget{vgg-prediction-accuracy-improvement}{%
+\paragraph{\texorpdfstring{\textbf{8.1 VGG Prediction Accuracy
+Improvement}}{8.1 VGG Prediction Accuracy Improvement}}\label{vgg-prediction-accuracy-improvement}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \begin{quote}
+  \textbf{Initial Setup:} We initially used a pre-trained VGG network to
+  classify real brain images from our dataset. The initial prediction
+  accuracy on this real dataset was approximately 81\%. This served as
+  our baseline to assess the effectiveness of using generated images to
+  augment the training set.
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Inclusion of Generated Images:} To enhance the robustness and
+  diversity of our training data, we incorporated images generated by
+  our class-based ProGAN into the dataset. These images included a
+  variety of brain images representing different classes, such as
+  healthy tissue, diseased states, and various imaging modalities like
+  MRI and CT scans. By augmenting the original dataset with these
+  synthetic images, we aimed to provide a richer set of examples for the
+  VGG classifier to learn from, thereby improving its ability to
+  generalise across real and synthetic data.
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Improved Accuracy:}After retraining the VGG network on this
+  augmented dataset (combining real and ProGAN-generated images), we
+  observed a notable improvement in classification accuracy. The
+  accuracy increased from about 81\% average to about 87\% on average. This enhancement underscores the
+  value of synthetic images in expanding the variability and coverage of
+  training datasets, particularly in domains where acquiring extensive
+  labelled data can be challenging or expensive.
+  \end{quote}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{COMP 5013 COURSEWORK R5//jarvis//media/image5.png}
+\end{figure}
+
+
+\end{figure}
+
+\item
+  \begin{quote}
+  \textbf{Confusion Matrix:}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{COMP 5013 COURSEWORK R5//jarvis//media/image6.png}
+\end{figure}
+
+In the confusion matrix analysis, a notable observation emerges: the
+model exhibits less confusion between classifying images of the brain
+with tumour and non tumour.\end{quote}
+\end{enumerate}
+\hypertarget{implications-and-applications}{%
+\paragraph{\texorpdfstring{\textbf{8.2 Implications and
+Applications}}{8.2 Implications and Applications}}\label{implications-and-applications}}
+
+\begin{itemize}
+\item
+  \begin{quote}
+  \textbf{Data Augmentation:} The use of synthetic images to augment
+  training datasets is particularly valuable in medical imaging, where
+  the diversity of pathological features captured in images can
+  significantly impact the performance of diagnostic algorithms.
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Disease Simulation:} The ability to generate class-specific
+  images allows for effective simulation of disease progressions or
+  variations in pathological features, providing a valuable tool for
+  medical research and education.
+  \end{quote}
+\item
+  \begin{quote}
+  \textbf{Personalized Treatment Planning:} With the enhanced capability
+  to generate specific and diverse medical images, our approach can aid
+  in creating personalised simulations and treatment planning scenarios,
+  which are crucial for tailored patient care.
+  \end{quote}
+\end{itemize}
+
+One notable advantage of our class-based ProGAN implementation is its
+ability to generate high-resolution brain images (up to 256X256 pixels)
+while preserving fine details and anatomical structures. Furthermore,
+the class-based conditioning in our model permits for the generation of
+brain images particular to different classes, such as healthy or
+diseased tissues, diverse imaging modalities (e.g., MRI, CT), or various
+anatomical regions. This flexibility can be important for applications
+like data augmentation, disease simulation, and personalised treatment
+planning.
+
+\textbf{9. Limitations and Future Work:}
+
+While the results from our class-based ProGAN implementation are
+promising, there are several limitations and areas for future
+improvement:
+
+\begin{quote}
+\textbf{1. Dataset Limitations:} Despite our efforts to curate a large
+and diverse dataset, the accessibility of well-annotated and
+high-quality medical imaging information remains a significant challenge
+Expanding the dataset with more diverse patient demographics, imaging
+modalities, and pathological conditions could further improve the
+model\textquotesingle s generalisation capabilities.
+
+\textbf{2. Computational Resources:} Training high-resolution generative
+models like ProGAN can be computationally intensive and may require
+specialised equipment or hardware (e.g., multiple GPUs) and significant
+computational resources. Exploring more efficient training strategies or
+distributing the training process across multiple machines could help
+mitigate these resource constraints.
+
+\textbf{3. Interpretability and Explainability}: While the generated
+images appear realistic and visually appealing, understanding the basic
+decision-making preparation of the generative model remains a challenge.
+Developing interpretable and explainable AI models is crucial for
+gaining trust and acceptance in medical applications.
+
+\textbf{4. Clinical Validation:} Although the expert evaluations were
+positive, further rigorous clinical validation and testing are necessary
+before deploying our class-based ProGAN model in real-world medical
+settings. This may include collaborating with healthcare institutions,
+conducting prospective studies, and assessing the
+model\textquotesingle s execution on a diverse set of clinical cases.
+
+\textbf{5. Integration with Existing Workflows:} Seamlessly integrating
+the generated synthetic images into existing medical imaging workflows
+and decision support systems is another area that requires further
+exploration. This may involve developing user-friendly interfaces,
+addressing data privacy and security concerns, and ensuring compliance
+with regulatory standards.
+\end{quote}
+
+Future work in this range may centre on tending to these limitations, as
+well as investigating progressed methods such as few-shot learning,
+domain adaptation, and multi-modal image synthesis. Additionally,
+combining generative models with other AI techniques, such as
+segmentation or detection models, could lead to more comprehensive and
+powerful solutions for medical imaging analysis and decision support.
+
+\textbf{9.1 Software Engineering Issues and Trade-offs:}
+
+During the development and implementation of our class-based ProGAN
+model for brain imaging, we encountered several software engineering
+challenges and trade-offs between performance and good coding practices.
+Here are some of the key issues and trade-offs we faced:
+
+\begin{quote}
+\textbf{1. Memory Management and Computational Resources:} Training
+high-resolution generative models like ProGAN can be computationally
+intensive and memory-demanding, particularly when working with expansive
+medical imaging datasets. We had to carefully manage memory utilisation
+and leverage techniques like gradient checkpointing and mixed-precision
+training to optimise performance while staying within the available
+computational resources.
+
+\textbf{2. Code Optimization and Parallelization:} To achieve reasonable
+training times and ensure efficient execution, we had to optimise
+various aspects of our code. This involved parallelizing computations
+across multiple GPUs, utilising efficient data loading and preprocessing
+pipelines, and optimising deep learning operations through libraries
+like cuDNN.
+
+\textbf{3. Modularity and Code Reusability:} While developing our model,
+we aimed to maintain a modular and reusable codebase. This involved
+separating concerns, such as data preprocessing, model architecture,
+training loops, and assessment metrics, into independent modules or
+classes. This approach facilitated code maintainability, testing, and
+potential integration with other projects or frameworks.
+
+\textbf{4. Reproducibility and Experiment Tracking:} Given the
+complexity of deep learning models and the numerous hyperparameters
+involved, ensuring reproducibility and tracking experiments became
+crucial. We implemented logging and experiment tracking mechanisms to
+record hyperparameters, model configurations, and performance metrics,
+enabling us to replicate and compare results across different runs.
+
+\textbf{5. Code Documentation and Collaboration:} As a team project,
+effective collaboration and code documentation were essential. We
+followed best practices for code commenting, version control, and code
+reviews to ensure that our codebase was comprehensible and maintainable
+by all team members.
+
+\textbf{6. Performance vs. Interpretability Trade-off:} While our
+primary focus was on achieving high-performance and visually appealing
+results, we recognized the importance of model interpretability in
+medical applications.We explored techniques like saliency maps and
+latent space interpolation to pick up bits of knowledge into the
+model\textquotesingle s decision-making process, albeit at the potential
+cost of reduced computational efficiency.
+
+\textbf{7. Deployment and Integration Considerations:} Looking ahead, we
+anticipate challenges in deploying our model in real-world medical
+imaging workflows. This may involve containerization, model serving
+infrastructure, user interfaces, and integration with existing
+healthcare systems, all while ensuring data privacy, security, and
+regulatory compliance.
+
+Throughout the development process, we aimed to strike a balance between
+performance optimization, code quality, and maintainability. While
+certain trade-offs were necessary to meet computational and resource
+constraints, we prioritised adherence to software engineering best
+practices to ensure a robust and extensible codebase.
+\end{quote}
+
+\textbf{10. Evaluation and Lessons Learned:}
+
+Reflecting on our journey of implementing the class-based ProGAN model
+for brain imaging, we can summarise our key achievements and lessons
+learned as follows:
+
+\textbf{10.1 Key Achievements:}
+
+\begin{quote}
+\textbf{1. Successful Implementation:} We successfully implemented a
+class-based GAN using the ProGAN architecture for generating
+high-resolution and realistic brain images conditioned on specific
+classes (e.g., healthy or diseased tissues).
+
+\textbf{2. Improved Image Quality and Resolution:} Our model
+demonstrated the ability to generate brain images with significantly
+improved quality and resolution compared to traditional medical imaging
+techniques or baseline generative models.
+
+\textbf{3. Class-Specific Generation:} The class-based conditioning
+allowed our model to generate brain images specific to different
+classes, such as healthy or diseased tissues, different imaging
+modalities, or various anatomical regions.
+
+\textbf{4. Positive Expert Evaluation:} Our generated brain images
+received positive feedback from medical experts and radiologists, who
+acknowledged the high quality, realism, and preservation of important
+anatomical details.
+
+\end{quote}
+
+\textbf{10.2 Key Lessons Learned:}
+
+\begin{quote}
+\textbf{1. Data Availability and Quality:} The accessibility of
+high-quality, diverse, and well-annotated medical imaging information
+remains a significant challenge. Expanding the dataset and ensuring
+accurate annotations could further improve the model\textquotesingle s
+generalisation capabilities.
+
+\textbf{2. Computational Resources:} Training high-resolution generative
+models like ProGAN can be computationally intensive and may require
+specialised equipment and significant computational assets or resources.
+Exploring more efficient training strategies or distributed training
+could help mitigate resource constraints.
+
+\textbf{3. Interpretability and Explainability:} While our model
+generates visually appealing results, understanding the underlying
+decision-making process remains a challenge. Developing interpretable
+and explainable AI models is crucial for gaining trust and acceptance in
+medical applications.
+
+\textbf{4. Clinical Validation:} Although the expert evaluations were
+positive, further rigorous clinical validation and testing are necessary
+before deploying our model in real-world medical settings. Collaborating
+with healthcare institutions and conducting prospective studies are
+essential steps.
+
+\textbf{5. Deployment and Integration:} Seamlessly integrating the
+generated synthetic images into existing medical imaging workflows and
+decision support systems requires careful consideration of user
+interfaces, data privacy, security, and regulatory compliance.
+\end{quote}
+
+If we had the opportunity to start over, one aspect we would approach
+differently is prioritising the collection and curation of a larger and
+more diverse medical imaging dataset from the outset. This could have
+potentially improved the model\textquotesingle s generalisation
+capabilities and reduced the need for extensive data augmentation
+techniques.
+
+Additionally, we would place a stronger emphasis on interpretability and
+explainability from the early stages of model development. Incorporating
+techniques like saliency maps, attention mechanisms, or latent space
+visualisation may give important bits of knowledge into the
+model\textquotesingle s decision-making process and enhance trust in the
+generated outputs.
+
+Overall, our experience with implementing the class-based ProGAN model
+for brain imaging has been a valuable learning opportunity. It has
+highlighted the potential of generative models in medical imaging while
+also exposing the challenges and areas for improvement. We believe that
+our work contributes to the developing body of research in this field
+and clears the way for further advancements in enhancing medical imaging
+through advanced AI techniques.
+\pagebreak
+
+ \begin{center}
+\textbf{References\\
+}
+\end{center}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  \begin{quote}
+  Arjovsky, M., \& Bottou, L. (2017). Towards principled methods for
+  training generative adversarial networks. arXiv preprint
+  arXiv:1701.04862. Retrieved from
+  \href{https://arxiv.org/abs/1701.04862}{\uline{https://arxiv.org/abs/1701.04862}}
+  \end{quote}
+\item
+  \begin{quote}
+  Armanious, K., Jiang, C., Fischer, M., Küstner, T., Hepp, T.,
+  Nikolaou, K., Gatidis, S., \& Yang, B. (2020, January 1).
+  \emph{MedGAN: Medical image translation using GANs}. Computerised
+  Medical Imaging and Graphics.
+  \href{https://doi.org/10.1016/j.compmedimag.2019.101684}{\uline{https://doi.org/10.1016/j.compmedimag.2019.101684}}
+  \end{quote}
+\item
+  \begin{quote}
+  Creswell, A., White, T., Dumoulin, V., Arulkumaran, K., Sengupta, B.,
+  \& Bharath, A. A. (2018). Generative adversarial networks: An
+  overview. IEEE Signal Processing Magazine, 35(1), 53-65. Retrieved
+  from \uline{https://ieeexplore.ieee.org/document/8253599}
+  \end{quote}
+
+
+\item
+  \begin{quote}
+  Dai, X., Cai, L., Zhang, W., Dai, B., Chen, Y., Sorokin, I., ... \&
+  Xing, E. P. (2020). Exponential cyclic mode generative adversarial
+  networks for synthesis of medical image data augmentation. IEEE
+  Access, 8, 193528-193542.
+  \end{quote}
+\item
+  \begin{quote}
+  Goodfellow, I. J., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley,
+  D., Ozair, S., ... \& Bengio, Y. (2014). Generative adversarial
+  networks. arXiv preprint arXiv:1406.2661. Retrieved from
+  \href{https://arxiv.org/abs/1406.2661}{\uline{https://arxiv.org/abs/1406.2661}}
+  \end{quote}
+\item
+  \begin{quote}
+  Heusel, M., Ramsauer, H., Unterthiner, T., Nessler, B., \& Hochreiter,
+  S. (2017). GANs trained by a two time-scale update rule converge to a
+  local Nash equilibrium. Retrieved from
+  \href{https://arxiv.org/abs/1706.08500}{\uline{https://arxiv.org/abs/1706.08500}}
+  \end{quote}
+\item
+  \begin{quote}
+  Jiang, Y., Gong, X., Liu, D., Cheng, Y., Fang, C., Shen, X., ... \&
+  Xia, T. (2021). Enlightengan: Deep light enhancement without paired
+  supervision. IEEE Transactions on Image Processing, 30, 2340-2349.
+  Retrieved from
+  \href{https://ieeexplore.ieee.org/document/933442}{\uline{https://ieeexplore.ieee.org/document/933442}}
+  \end{quote}
+\item
+  \begin{quote}
+  Hore, A., \& Ziou, D. (2010). Image quality metrics: PSNR vs. SSIM. In
+  2010 20th international conference on pattern recognition (pp.
+  2366-2369).
+  \href{https://ieeexplore.ieee.org/document/5596999}{\uline{https://ieeexplore.ieee.org/document/5596999}}
+  \end{quote}
+\item
+  \begin{quote}
+  Kaissis, G. A., Makowski, M. R., Rückert, D., \& Braren, R. F. (2020).
+  Secure, privacy-preserving and federated machine learning in medical
+  imaging. Nature Machine Intelligence, 2(6), 305-311. Retrieved from
+  \href{https://www.nature.com/articles/s42256-020-0186-1}{\uline{https://www.nature.com/articles/s42256-020-0186-1}}
+  \end{quote}
+
+\item
+  \begin{quote}
+  Karras, T., Aila, T., Laine, S., \& Lehtinen, J. (2018). Progressive
+  growing of gans for improved quality, stability, and variation. arXiv
+  preprint arXiv:1710.10196. Retrieved from
+  \href{https://arxiv.org/abs/1710.10196}{\uline{https://arxiv.org/abs/1710.10196}}
+  \end{quote}
+
+\item
+  \begin{quote}
+  Karras, T., Laine, S., \& Aila, T. (2019). A style-based generator
+  architecture for generative adversarial networks. In Proceedings of
+  the IEEE/CVF Conference on Computer Vision and Pattern Recognition
+  (pp. 4401-4410). Retrieved from
+  \href{https://ieeexplore.ieee.org/document/8953766}{\uline{https://ieeexplore.ieee.org/document/8953766}}
+  \end{quote}
+
+\item
+  \begin{quote}
+  Kazeminia, S., Baur, C., Kuijper, A., van Ginneken, B., Navab, N.,
+  Albarqouni, S., \& Mukhopadhyay, A. (2020). GANs for medical image
+  analysis. Artificial Intelligence in Medicine, 109, 101938. Retrieved
+  from
+  \href{https://arxiv.org/abs/1809.06222}{\uline{https://arxiv.org/abs/1809.06222}}
+  \end{quote}
+
+\item
+  \begin{quote}
+  Ren, Y., Yu, X., Zhang, R., Li, T. H., Liu, S., \& Li, G. (2019).
+  Structureflow: Image inpainting via structure-aware appearance flow.
+  In Proceedings of the IEEE/CVF International Conference on Computer
+  Vision (pp. 181-190). Retrieved from
+  \href{https://arxiv.org/abs/1908.03852}{\uline{https://arxiv.org/abs/1908.03852}}
+  \end{quote}
+
+\item
+  \begin{quote}
+  Salimans, T., Goodfellow, I., Zaremba, W., Cheung, V., Radford, A., \&
+  Chen, X. (2016). Improved techniques for training gans. arXiv preprint
+  arXiv:1606.03498. Retrieved from
+  \href{https://arxiv.org/abs/1606.03498}{\uline{https://arxiv.org/abs/1606.03498}}
+  \end{quote}
+
+\item
+  \begin{quote}
+  Shin, H. C., Tenenholtz, N. A., Rogers, J. K., Schwarz, C. G., Senjem,
+  M. L., Gunter, J. L., ... \& Michalski, M. H. (2018). Medical image
+  synthesis for data augmentation and anonymization using generative
+  adversarial networks. In Simulation and synthesis in medical imaging
+  (pp. 1-11). Retrieved from
+  \href{https://arxiv.org/abs/1807.10225}{\uline{https://arxiv.org/abs/1807.10225}}
+  \end{quote}
+
+\item
+  \begin{quote}
+  Szegedy, C., Vanhoucke, V., Ioffe, S., Shlens, J., \& Wojna, Z.
+  (2016). Rethinking the inception architecture for computer vision. In
+  Proceedings of the IEEE conference on computer vision and pattern
+  recognition (pp. 2818-2826). Retrieved from
+  \href{https://ieeexplore.ieee.org/document/7780677}{\uline{https://ieeexplore.ieee.org/document/7780677}}
+  \end{quote}
+
+\item
+  \begin{quote}
+  Wang, Z., Bovik, A. C., Sheikh, H. R., \& Simoncelli, E. P. (2004).
+  Image quality assessment: from error visibility to structural
+  similarity. IEEE transactions on image processing, 13(4), 600-612.
+  Retrieved from
+  \href{https://ieeexplore.ieee.org/document/1188837}{\uline{https://ieeexplore.ieee.org/document/1188837}}
+  \end{quote}
+
+\item
+  \begin{quote}
+  Xian, Y., Lorenz, T., Schiele, B., \& Akata, Z. (2018). Feature
+  generating networks for zero-shot learning. In Proceedings of the IEEE
+  conference on computer vision and pattern recognition (pp. 5542-5551).
+  Retrieved from
+  \href{https://arxiv.org/abs/1712.00981}{\uline{https://arxiv.org/abs/1712.00981}}
+  \end{quote}
+\item
+  \begin{quote}
+  Radford, A., Metz, L., \& Chintala, S. (2015). Unsupervised
+  representation learning with deep convolutional generative adversarial
+  networks.
+  \href{https://arxiv.org/abs/1511.06434}{\uline{https://arxiv.org/abs/1511.06434}}
+  \end{quote}
+\item
+  \begin{quote}
+  Mirza, M., \& Osindero, S. (2014). Conditional generative adversarial
+  nets.
+  \href{https://arxiv.org/pdf/1411.1784}{\uline{https://arxiv.org/pdf/1411.1784}}
+  \end{quote}
+\item
+  \begin{quote}
+  Odena, A., Olah, C., \& Shlens, J. (2017). Conditional image synthesis
+  with auxiliary classifier gans. In the International conference on
+  machine learning (pp. 2642-2651). PMLR.
+  \href{https://arxiv.org/abs/1610.09585}{\uline{https://arxiv.org/abs/1610.09585}}
+  \end{quote}
+\item
+  \begin{quote}
+  Kingma, D. P., \& Ba, J. (2014). Adam: A method for stochastic
+  optimization.
+  \href{https://arxiv.org/abs/1412.6980}{\uline{https://arxiv.org/abs/1412.6980}}
+  \end{quote}
+\end{enumerate}
+Git Hub link : https://github.com/Plymouth-COMP5013-S24/coursework-jarvis
+Demonstration Video link: https://drive.google.com/file/d/1wOBdFEmNO24ojZ11T-tLZVBeSdcVCzNQ/view?usp=sharing
+\end{document}
